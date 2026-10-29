@@ -1,4 +1,4 @@
-# B1-1 시스템 관제 자동화 스크립트 개발
+# B4-1 시스템 관제 자동화 스크립트 개발
 - 안정적인 서버 운영 환경 직접 구축
 - 다중 사용자 환경에서의 권한관리와 네트워크 보안 설정
 - 시스템 리소스 관제와 로그 관리를 자동화하는 쉘 스크립트 개발 수행
@@ -55,7 +55,7 @@
 1. Ubuntu VM 생성
 
     OrbStack에서 Linux Machine 생성
-    ![alt text](/docs/screenshots/b1-1_create_linux_machine.png)
+    ![alt text](/docs/screenshots/B4-1_create_linux_machine.png)
 2. VM 접속
    ```bash
    # VM 접속
@@ -81,7 +81,7 @@
     ```bash
     bash scripts/provision.sh
     ```
-    ![alt text](docs/screenshots/b1-1_excuting_provision_sh.png)
+    ![alt text](docs/screenshots/B4-1_excuting_provision_sh.png)
 5. `agent-app-linux-x86` 앱 실행
     ```bash
     # agent-admin 전환
@@ -90,7 +90,7 @@
     cd agent-app
     ./agent-app-linux-x86
     ```
-    ![alt text](docs/screenshots/b1-1_excuting_agent_app.png)
+    ![alt text](docs/screenshots/B4-1_excuting_agent_app.png)
 6. 모니터링 스크립트 `monitor.sh` 실행 (새로운 터미널에서 orb 접속)
     ```bash
     orb
@@ -100,14 +100,14 @@
     cd ~/agent-app/bin
     bash monitor.sh
     ```
-    ![alt text](docs/screenshots/b1-1_system_monitor_result.png)
+    ![alt text](docs/screenshots/B4-1_system_monitor_result.png)
 
 7. 로그 확인
     ```bash
     cd /var/log/agent-app
     tail -f monitor.log
     ```
-    ![alt text](docs/screenshots/b1-1_monitoring_log.png)
+    ![alt text](docs/screenshots/B4-1_monitoring_log.png)
 
 
 
@@ -193,7 +193,7 @@ SSH Port 는 `sshd_config` 에서 수정할 수 있고,
 - 포트 변경
 
     Port `22` 를 주석 해제 하고, Port `20022` 로 변경한다.
-    ![alt text](docs/screenshots/b1-1_포트%20변경%20전.png)
+    ![alt text](docs/screenshots/B4-1_포트%20변경%20전.png)
 
 
 - 포트 변경 확인
@@ -204,7 +204,7 @@ SSH Port 는 `sshd_config` 에서 수정할 수 있고,
     
     포트 변경 후 SSH 데몬이 `20022` 포트로 리스닝하도록 설정되었다. 
 
-    ![alt text](docs/screenshots/b1-1_포트%20변경%20후.png)
+    ![alt text](docs/screenshots/B4-1_포트%20변경%20후.png)
 <br>
 <br>
 
@@ -276,7 +276,7 @@ root@ubuntu:~# grep '^#\?PermitRootLogin' /etc/ssh/sshd_config
 sudo sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin no/' /etc/ssh/sshd_config
 ```
 
-![alt text](docs/screenshots/b1-1_PermitRootLogin%20변경%20전.png)
+![alt text](docs/screenshots/B4-1_PermitRootLogin%20변경%20전.png)
 
 
 ### 2. 권한 변경 (후)
@@ -285,7 +285,7 @@ grep '^#\?PermitRootLogin' /etc/ssh/sshd_config
 PermitRootLogin no
 ```
 
-![alt text](docs/screenshots/b1-1_PermitRootLogin%20변경%20후.png)
+![alt text](docs/screenshots/B4-1_PermitRootLogin%20변경%20후.png)
 
 ### cf. PermitRootLogin 의 옵션
     - yes : Root 로그인 허용 (비밀번호 가능)  
@@ -713,7 +713,7 @@ nano /home/agent-admin/.bashrc
 
     agent_api_key_test
     ```
-![alt text](docs/screenshots/b1-1_사용자%20전환(root%20->%20agent-admin).png)
+![alt text](docs/screenshots/B4-1_사용자%20전환(root%20->%20agent-admin).png)
 
 ## 4-3. 앱 실행 (./agent-app-linux-x86)
 ### 앱 실행 준비
@@ -770,7 +770,7 @@ nano /home/agent-admin/.bashrc
     All Boot Checks Passed!
     Agent READY
     ```
-    ![alt text](docs/screenshots/b1-1_secret.key%20이름변경%20후%20앱%20정상%20실행.png)
+    ![alt text](docs/screenshots/B4-1_secret.key%20이름변경%20후%20앱%20정상%20실행.png)
 
 - root 로 실행할 때 (권한을 agent-admin 만 줬기 때문에 차단됨)
     ```bash
@@ -973,7 +973,7 @@ tcp   LISTEN 0      1            0.0.0.0:15034      0.0.0.0:*    users:(("agent-
     ```
 
 - 방화벽 활성화 완료
-    ![alt text](docs/screenshots/b1-1_agent-admin에게%20ufw%20status%20조회%20권한%20추가.png)
+    ![alt text](docs/screenshots/B4-1_agent-admin에게%20ufw%20status%20조회%20권한%20추가.png)
 
 ### `monitor.sh` 실행
 - `sudoers` 에서 허용한 명령으로 정확히 호출 및 문제 해결(방화벽 활성화) 됨
@@ -1081,7 +1081,7 @@ agent-admin@abc123:~$ crontab -l
 # 최근 로그 5개 확인
 tail /var/log/agent-app/monitor.log
 ```
-![alt text](docs/screenshots/b1-1_cron%20매분%20간격%20tail%20-n.png)
+![alt text](docs/screenshots/B4-1_cron%20매분%20간격%20tail%20-n.png)
 <br>
 <br>
 .EOD
